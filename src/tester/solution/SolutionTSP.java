@@ -1,9 +1,9 @@
-package tester;
+package tester.solution;
 
 import java.util.ArrayList;
 
 public class SolutionTSP extends ArrayList<Integer> implements Solution{
-    Integer getLatest() {
+    public Integer getLatest() {
         return this.get(this.size()-1);
     }
 }

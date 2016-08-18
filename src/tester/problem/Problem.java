@@ -1,8 +1,15 @@
 package tester.problem;
 
-import tester.Solution;
+import tester.OptionsHash;
+import tester.solution.Solution;
 
 public interface Problem {
+    
+    /**
+     * @param opt
+     * @return Generated problem from the options specified.
+     */
+    Problem generateProblem(OptionsHash opt);
     
     /**
      * @param s A solution to this problem, that may be incomplete or infeasible.

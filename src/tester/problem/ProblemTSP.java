@@ -1,7 +1,9 @@
 package tester.problem;
 
-import tester.Solution;
-import tester.SolutionTSP;
+import tester.E;
+import tester.OptionsHash;
+import tester.solution.Solution;
+import tester.solution.SolutionTSP;
 
 public class ProblemTSP implements Problem{
     
@@ -10,6 +12,38 @@ public class ProblemTSP implements Problem{
     protected int m;
     
     protected float[][] distanceMatrix;
+    
+    @Override
+    public String toString(){
+        String str = "";
+        for(int i = 0; i < numOfCities; i++){
+            for(int j = 0; j < numOfCities; j++){
+                str += String.format("%2.3f ", this.distanceMatrix[i][j]);
+            }
+            str += String.format("%n");
+        }
+        return str;
+    }
+    
+    public ProblemTSP(OptionsHash opt) throws Exception{
+        
+        this.m = Integer.valueOf(opt.getIndispensable(E.m));
+        numOfCities = Integer.valueOf(opt.getIndispensable(E.numOfCities));
+        distanceMatrix = new float[numOfCities][numOfCities];
+        
+        for(int i = 0; i < numOfCities; i++){
+            for(int j = i; j < numOfCities; j++){
+                distanceMatrix[i][j] = distanceMatrix[j][i] = 
+                        Float.valueOf(opt.getIndispensable(String.format("%d,%d", i,j)));
+            }
+        }
+        // validate();
+    }
+    
+    private void validate() throws Exception{
+        if(this.distanceMatrix.length != this.distanceMatrix[0].length)
+            throw new Exception("Width and length of distance matrix don't match!");
+    }
     
     public int getNumOfCities() {
         return numOfCities;
@@ -57,5 +91,11 @@ public class ProblemTSP implements Problem{
         
         getShortestDistanceBetweenAnyCity();
         return 0;
+    }
+
+    @Override
+    public Problem generateProblem(OptionsHash opt) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

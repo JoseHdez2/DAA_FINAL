@@ -1,4 +1,4 @@
-package tester;
+package tester.solution;
 
 public interface Solution {
 

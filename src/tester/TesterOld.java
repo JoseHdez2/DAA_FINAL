@@ -7,7 +7,6 @@ import tester.problem.Problem;
 public abstract class TesterOld {
     
     // Test options.
-    static final String OPT_TIMES = "times"; // Times to test each configuration.
     static final String OPT_SIZE_BEG = "probSizeBeg";
     static final String OPT_SIZE_END = "probSizeEnd";
     
@@ -18,18 +17,18 @@ public abstract class TesterOld {
     /**
      * @param opt Options hash where all the test options are stored.
      */
-    void testBattery(HashMap<String,String> opt){
-        if(opt.keySet().contains(OPT_TIMES)){
-            int times = Integer.getInteger(opt.get(OPT_TIMES));
+    void testBattery(OptionsHash opt){
+        if(opt.keySet().contains(E.times)){
+            int times = Integer.getInteger(opt.get(E.times));
             for(int i = 0; i < times; i++){
                 // Individual test
                 long millisecondsTaken = 0;
                 int sizeBeg = 1, sizeEnd = 1;
-                if(opt.keySet().contains(OPT_SIZE_BEG)){
-                    sizeBeg = Integer.getInteger(opt.get(OPT_SIZE_BEG));
+                if(opt.keySet().contains(E.probSizeBeg)){
+                    sizeBeg = Integer.getInteger(opt.get(E.probSizeBeg));
                 }
-                if(opt.keySet().contains(OPT_SIZE_BEG)){
-                    sizeEnd = Integer.getInteger(opt.get(OPT_SIZE_END));
+                if(opt.keySet().contains(E.probSizeEnd)){
+                    sizeEnd = Integer.getInteger(opt.get(E.probSizeEnd));
                 }
                 for(int j = sizeBeg; j <= sizeEnd; j++){
                     test();
@@ -48,8 +47,8 @@ public abstract class TesterOld {
         long endTime = System.nanoTime();
         long millisecondsTaken = (endTime - startTime);
         HashMap<String,String> results = new HashMap<String,String>();
-        results.put(DATA_TIME, String.valueOf(millisecondsTaken));
-        results.put(DATA_SOL, sol);
+        results.put(E.timeTaken, String.valueOf(millisecondsTaken));
+        results.put(E.solution, sol);
         return results;
     }
     

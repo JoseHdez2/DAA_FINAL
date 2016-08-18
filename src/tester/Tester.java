@@ -6,9 +6,26 @@ import tester.problem.Problem;
 
 public abstract class Tester {
     
-    abstract HashMap<String, String> testBattery(HashMap<String, String> opt);
+    /**
+     * Battery of tests with generated problems.
+     * @param opt Options for testing and problem generation.
+     * @return Results. TODO
+     */
+    abstract public HashMap<String, String> testBattery(OptionsHash opt);
     
-    abstract HashMap<String, String> individualTest(Problem p);
+    /**
+     * Same but, all tests are done on the same Problem.
+     * @param opt Options for testing.
+     * @return Results. TODO
+     */
+    abstract public HashMap<String, String> testBattery(Problem p, OptionsHash opt);
     
-    abstract String solveAndShowSolution(Problem p);
+    /**
+     * Perform a single test on a single problem.
+     * @param opt Options for testing.
+     * @return Results. TODO
+     */
+    abstract public HashMap<String, String> individualTest(Problem p, OptionsHash opt);
+    
+    abstract public Problem generateProblem(OptionsHash opt) throws Exception;
 }

@@ -2,9 +2,11 @@ package tester;
 
 import java.util.Arrays;
 
+import tester.problem.Problem;
 import tester.problem.ProblemTSP;
+import tester.solution.SolutionTSP;
 
-public class SolverTSP {
+public class SolverTSP implements Solver{
     
     SolutionTSP solveByGreedy(ProblemTSP p){
         SolutionTSP sol = new SolutionTSP();
@@ -35,5 +37,11 @@ public class SolverTSP {
         //if() TODO continuara...
         
         return sol;
+    }
+    
+    @Override
+    public OptionsHash solve(Problem p, OptionsHash opt){
+        
+        return null;
     }
 }
