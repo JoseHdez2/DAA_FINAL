@@ -62,15 +62,17 @@ public class Main {
         ProblemTSP probGen = (ProblemTSP) tt.generateProblem(probOptsGen);
         System.out.println(probGen);
         
+        /*
         OptionsHash probOptsXml = TSPProblemFromXML.OptFromXML(new File("res/samples/gr17.xml"));
         System.out.println(probOptsXml);
         probOptsXml.put(E.m, String.valueOf(Integer.valueOf(probOptsXml.getIndispensable(E.numOfCities)) / 3));
         ProblemTSP probXml = new ProblemTSP(probOptsXml);
         System.out.println(probXml);
+        */
         
         SolverTSP solver = new SolverTSP();
         SolutionTSP sol = (SolutionTSP)solver.solve(probGen, new OptionsHash());
         System.out.println(String.format("Sol : %s", sol));
-        System.out.println(String.format("Sol : %3.2f", probXml.appraiseSolution(sol)));
+        System.out.println(String.format("Sol : %3.2f", probGen.appraiseSolution(sol)));
     }
 }

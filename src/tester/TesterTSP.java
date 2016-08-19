@@ -13,9 +13,16 @@ import tester.solver.Solver;
  * @author jose
  *
  */
-public class TesterTSP extends Tester {
+public class TesterTSP implements TesterInterface {
     
     Solver solver;
+    
+    enum GenType {
+        EQUAL_DISTRIBUTION,    // Evenly random distances between minDist and maxDist.
+        BIASED                 // A single path with minDist distances, rest with maxDist (good for debugging).
+    }
+    
+    GenType genType = GenType.BIASED;
     
     @Override
     public HashMap<String, String> testBattery(OptionsHash opt) {
@@ -53,6 +60,14 @@ public class TesterTSP extends Tester {
                         opt.put(String.format("%s,%s", i,j), "0");
                     }
                     else {
+                        switch(genType){
+                        case BIASED:
+                            break;
+                        case EQUAL_DISTRIBUTION:
+                            break;
+                        default:
+                            break;
+                        }
                         opt.put(String.format("%s,%s", i,j), 
                                 String.valueOf(Rand.randFloat(minDist, maxDist)));
                     }
