@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import tester.OptionsHash;
+import convenience.OptionsHash;
 import tester.problem.ProblemTSP;
 
 public class ReaderTSP {

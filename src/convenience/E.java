@@ -1,4 +1,4 @@
-package tester;
+package convenience;
 
 /**
  *  Collection of strings used in the program, 

@@ -5,6 +5,9 @@ package tester;
 
 import java.util.HashMap;
 
+import convenience.E;
+import convenience.OptionsHash;
+import convenience.Rand;
 import tester.problem.Problem;
 import tester.problem.ProblemTSP;
 import tester.solver.Solver;
@@ -62,15 +65,16 @@ public class TesterTSP implements TesterInterface {
                     else {
                         switch(genType){
                         case BIASED:
-                            break;
+                            opt.put(String.format("%s,%s", i,j), 
+                                    String.valueOf(maxDist)); break;
                         case EQUAL_DISTRIBUTION:
-                            break;
-                        default:
-                            break;
+                            opt.put(String.format("%s,%s", i,j), 
+                                    String.valueOf(Rand.randFloat(minDist, maxDist))); break;
                         }
-                        opt.put(String.format("%s,%s", i,j), 
-                                String.valueOf(Rand.randFloat(minDist, maxDist)));
                     }
+                    if(genType == GenType.BIASED)
+                        opt.put(String.format("%s,%s", i, rand), 
+                                String.valueOf(maxDist)); break;
                 }
             }
         }

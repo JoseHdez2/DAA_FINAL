@@ -1,7 +1,7 @@
 package tester.problem;
 
-import tester.E;
-import tester.OptionsHash;
+import convenience.E;
+import convenience.OptionsHash;
 import tester.solution.Solution;
 import tester.solution.SolutionTSP;
 

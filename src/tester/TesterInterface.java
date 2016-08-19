@@ -2,6 +2,7 @@ package tester;
 
 import java.util.HashMap;
 
+import convenience.OptionsHash;
 import tester.problem.Problem;
 
 public interface TesterInterface {

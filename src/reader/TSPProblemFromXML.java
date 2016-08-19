@@ -9,8 +9,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import tester.E;
-import tester.OptionsHash;
+import convenience.E;
+import convenience.OptionsHash;
 
 /**
  * @author jose

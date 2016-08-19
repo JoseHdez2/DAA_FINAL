@@ -8,9 +8,9 @@ import java.util.Scanner;
 import javax.print.StreamPrintServiceFactory;
 import javax.security.auth.login.AccountLockedException;
 
+import convenience.E;
+import convenience.OptionsHash;
 import reader.TSPProblemFromXML;
-import tester.E;
-import tester.OptionsHash;
 import tester.TesterTSP;
 import tester.problem.ProblemTSP;
 import tester.solution.SolutionTSP;

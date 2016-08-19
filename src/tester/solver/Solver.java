@@ -1,6 +1,6 @@
 package tester.solver;
 
-import tester.OptionsHash;
+import convenience.OptionsHash;
 import tester.problem.Problem;
 import tester.solution.Solution;
 

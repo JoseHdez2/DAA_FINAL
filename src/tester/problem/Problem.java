@@ -1,6 +1,6 @@
 package tester.problem;
 
-import tester.OptionsHash;
+import convenience.OptionsHash;
 import tester.solution.Solution;
 
 public interface Problem {

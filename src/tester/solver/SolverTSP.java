@@ -3,7 +3,7 @@ package tester.solver;
 import java.awt.datatransfer.SystemFlavorMap;
 import java.util.Arrays;
 
-import tester.OptionsHash;
+import convenience.OptionsHash;
 import tester.problem.Problem;
 import tester.problem.ProblemTSP;
 import tester.solution.Solution;
