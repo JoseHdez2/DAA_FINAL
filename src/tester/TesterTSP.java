@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import tester.problem.Problem;
 import tester.problem.ProblemTSP;
+import tester.solver.Solver;
 
 /**
  * @author jose

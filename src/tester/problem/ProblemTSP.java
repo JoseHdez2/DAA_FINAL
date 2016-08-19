@@ -8,8 +8,6 @@ import tester.solution.SolutionTSP;
 public class ProblemTSP implements Problem{
     
     protected int numOfCities;
-    // Minimum number
-    protected int m;
     
     protected float[][] distanceMatrix;
     
@@ -18,7 +16,7 @@ public class ProblemTSP implements Problem{
         String str = "";
         for(int i = 0; i < numOfCities; i++){
             for(int j = 0; j < numOfCities; j++){
-                str += String.format("%2.3f ", this.distanceMatrix[i][j]);
+                str += String.format("%3.2f ", this.distanceMatrix[i][j]);
             }
             str += String.format("%n");
         }
@@ -27,7 +25,6 @@ public class ProblemTSP implements Problem{
     
     public ProblemTSP(OptionsHash opt) throws Exception{
         
-        this.m = Integer.valueOf(opt.getIndispensable(E.m));
         numOfCities = Integer.valueOf(opt.getIndispensable(E.numOfCities));
         distanceMatrix = new float[numOfCities][numOfCities];
         
@@ -67,7 +64,7 @@ public class ProblemTSP implements Problem{
     @Override
     public boolean isCompleteSolution(Solution s) {
         SolutionTSP sol = (SolutionTSP)s;
-        if (sol.size() == m) return true;
+        if (sol.size() == numOfCities) return true;
         else return false;
     }
 
