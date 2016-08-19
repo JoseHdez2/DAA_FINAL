@@ -18,14 +18,14 @@ import tester.OptionsHash;
  *  Creates a TSP problem from an XML file.
  *  XML file uses TSPLIB format.
  */
-public class TSPProblemFromXML{
+public abstract class TSPProblemFromXML{
     
-    public TSPProblemFromXML(File file) throws Exception{
-        Document dom = this.parseXML(file);
-        parseDocument(dom);
+    public static OptionsHash OptFromXML(File file) throws Exception{
+        Document dom = TSPProblemFromXML.parseXML(file);
+        return parseDocument(dom);
     }
     
-    private Document parseXML(File file){
+    private static Document parseXML(File file){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document dom = null;
         
@@ -39,7 +39,7 @@ public class TSPProblemFromXML{
         return dom;
     }
     
-    private void parseDocument(Document dom) throws Exception{
+    private static OptionsHash parseDocument(Document dom) throws Exception{
         Element docEle = dom.getDocumentElement();
         
         String name = MyXML.getStringContent(docEle, E.name);
@@ -51,8 +51,15 @@ public class TSPProblemFromXML{
         Element graphEle = (Element) MyXML.getSubNode(docEle, "graph");
         OptionsHash distanceMatrix = parseGraphElement(graphEle);
         
+        distanceMatrix.put(E.name, name);
+        distanceMatrix.put(E.source, source);
+        distanceMatrix.put(E.description, description);
+        distanceMatrix.put(E.doublePrecision, String.valueOf(doublePrecision));
+        distanceMatrix.put(E.ignoredDigits, String.valueOf(ignoredDigits));
+        
         if (Integer.valueOf(distanceMatrix.getIndispensable(E.numOfCities)) <= 1) 
             throw new Exception("Matrix must have 2 or more nodes.");
+        return distanceMatrix;
     }
     
     /**
@@ -66,7 +73,7 @@ public class TSPProblemFromXML{
      * @return HashMap with distances.
      * @throws Exception
      */
-    private OptionsHash parseGraphElement(Element graphEle) throws Exception{
+    private static OptionsHash parseGraphElement(Element graphEle) throws Exception{
         NodeList vertexEleList = MyXML.getSubNodeList(graphEle, "vertex");
         
         // DistanceMatrix distMat = new DistanceMatrix(vertexEleList.getLength());
