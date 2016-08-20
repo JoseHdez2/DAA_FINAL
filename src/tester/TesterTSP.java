@@ -21,8 +21,8 @@ public class TesterTSP implements TesterInterface {
     Solver solver;
     
     enum GenType {
-        EQUAL_DISTRIBUTION,    // Evenly random distances between minDist and maxDist.
-        BIASED                 // A single path with minDist distances, rest with maxDist (good for debugging).
+        UNIFORM_DISTRIBUTION,   // Evenly random distances between minDist and maxDist.
+        BIASED                  // A single path with minDist distances, rest with maxDist (good for debugging).
     }
     
     GenType genType = GenType.BIASED;
@@ -67,14 +67,19 @@ public class TesterTSP implements TesterInterface {
                         case BIASED:
                             opt.put(String.format("%s,%s", i,j), 
                                     String.valueOf(maxDist)); break;
-                        case EQUAL_DISTRIBUTION:
+                        case UNIFORM_DISTRIBUTION:
                             opt.put(String.format("%s,%s", i,j), 
                                     String.valueOf(Rand.randFloat(minDist, maxDist))); break;
                         }
                     }
-                    if(genType == GenType.BIASED)
-                        opt.put(String.format("%s,%s", i, rand), 
-                                String.valueOf(maxDist)); break;
+                    if(genType == GenType.BIASED){
+                        int randSisterCity;
+                        do{
+                            randSisterCity = Rand.randInt(0, numOfCities-1);
+                        }while(randSisterCity == i);
+                        opt.put(String.format("%s,%s", i, randSisterCity), 
+                                        String.valueOf(minDist));
+                    }
                 }
             }
         }

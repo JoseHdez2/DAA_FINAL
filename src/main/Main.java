@@ -53,8 +53,7 @@ public class Main {
     
     public static void main(String[] args) throws Exception {
         OptionsHash probOptsGen = new OptionsHash();
-        probOptsGen.put("m", "5");
-        probOptsGen.put("numOfCities", "4");
+        probOptsGen.put("numOfCities", "6");
         probOptsGen.put("minDist", "1");
         probOptsGen.put("maxDist", "9");
         System.out.println(probOptsGen);
@@ -74,5 +73,6 @@ public class Main {
         SolutionTSP sol = (SolutionTSP)solver.solve(probGen, new OptionsHash());
         System.out.println(String.format("Sol : %s", sol));
         System.out.println(String.format("Sol : %3.2f", probGen.appraiseSolution(sol)));
+        System.out.println(probGen.showSolutionAppraisal(sol));
     }
 }

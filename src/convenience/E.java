@@ -25,8 +25,10 @@ public class E {
     public static final String solution = "solution";
     
     // TSP Problem generation input.
-    public static final String m = "m";
     public static final String numOfCities = "numOfCities";
     public static final String minDist = "minDist";
     public static final String maxDist = "maxDist";
+    
+    // MMD Problem
+    public static final String m = "m";
 }

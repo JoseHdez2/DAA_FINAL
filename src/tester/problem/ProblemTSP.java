@@ -60,6 +60,15 @@ public class ProblemTSP implements Problem{
         }
         return totalDist;
     }
+    
+    public String showSolutionAppraisal(SolutionTSP s){
+        String str = "";
+        for(int i = 0; i < s.size()-1; i++){
+            if (i == 0) str += String.format("%d",i);
+            str += String.format(" >[%3.2f]> %d", getDistance(i, i+1), i+1);
+        }
+        return str;
+    }
 
     @Override
     public boolean isCompleteSolution(Solution s) {

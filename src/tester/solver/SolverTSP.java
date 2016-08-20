@@ -20,7 +20,8 @@ public class SolverTSP implements Solver{
     public solverType myType;
     
     public SolverTSP(){
-        myType = solverType.BRUTE_FORCE;
+        myType = solverType.GREEDY;
+        // myType = solverType.BRUTE_FORCE;
     }
     
     SolutionTSP solveByGreedy(ProblemTSP p){
