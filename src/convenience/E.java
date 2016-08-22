@@ -30,5 +30,8 @@ public class E {
     public static final String maxDist = "maxDist";
     
     // MMD Problem
+    /** Target size of the solution subset. */
     public static final String m = "m";
+    /** Dimensions of the points in space of the MMD Problem. */
+    public static final String dim = "dim";
 }

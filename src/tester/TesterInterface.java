@@ -3,7 +3,7 @@ package tester;
 import java.util.HashMap;
 
 import convenience.OptionsHash;
-import tester.problem.Problem;
+import tester.problem.InterfaceProblem;
 
 public interface TesterInterface {
     
@@ -19,14 +19,20 @@ public interface TesterInterface {
      * @param opt Options for testing.
      * @return Results. TODO
      */
-    public HashMap<String, String> testBattery(Problem p, OptionsHash opt);
+    public HashMap<String, String> testBattery(InterfaceProblem p, OptionsHash opt);
     
     /**
      * Perform a single test on a single problem.
      * @param opt Options for testing.
      * @return Results. TODO
      */
-    public HashMap<String, String> individualTest(Problem p, OptionsHash opt);
+    public HashMap<String, String> individualTest(InterfaceProblem p, OptionsHash opt);
     
-    public Problem generateProblem(OptionsHash opt) throws Exception;
+    /**
+     * 
+     * @param opt
+     * @return Problem instance generated within the provided parameters.
+     * @throws Exception If an argument indispensable for generation is missing.
+     */
+    public InterfaceProblem generateProblem(OptionsHash opt) throws Exception;
 }

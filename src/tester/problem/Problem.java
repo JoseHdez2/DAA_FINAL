@@ -1,34 +1,38 @@
 package tester.problem;
 
-import convenience.OptionsHash;
+import java.util.ArrayList;
+
 import tester.solution.Solution;
 
-public interface Problem {
+public abstract class Problem implements InterfaceProblem{
     
-    /**
-     * @param opt
-     * @return Generated problem from the options specified.
-     */
-    Problem generateProblem(OptionsHash opt);
-    
-    /**
-     * @param s A solution to this problem, that may be incomplete or infeasible.
-     * @return The value of the given solution, regardless of completeness or feasibility.
-     */
-    float appraiseSolution(Solution s);
-    
-    /**
-     * Used for knowing when to stop the building of a solution.
-     * @param s Partial or complete solution.
-     * @return Whether the given solution is complete and feasible (not necessarily optimal).
-     */
-    boolean isCompleteSolution(Solution s);
-    
-    /**
-     * Used in the calculation of heuristics.
-     * If a complete solution is given, the potential is zero by definition.
-     * @param s Partial (or complete) solution.
-     * @return The potential worth of a solution given the problem space.
-     */
-    float getSolutionPotential(Solution s);
+    @Override
+    public Solution bestSolution(ArrayList<Solution> solutions) {
+        // TODO if(s.isEmpty())
+        Solution bestNeigh = null;
+        Float bestVal = null;
+        for (Solution neigh : solutions){
+            if (bestNeigh == null){
+                bestNeigh = neigh;
+                bestVal = appraiseSolution(neigh);
+                continue;
+            }
+            
+            switch(objFunc()){
+            case MAXIMIZE:
+                if(appraiseSolution(neigh) > bestVal){
+                    bestNeigh = neigh;
+                    bestVal = appraiseSolution(neigh);
+                }
+                break;
+            case MINIMIZE:
+                if(appraiseSolution(neigh) < bestVal){
+                    bestNeigh = neigh;
+                    bestVal = appraiseSolution(neigh);
+                }
+                break;
+            }
+        }
+        return bestNeigh;
+    }
 }

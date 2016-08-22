@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import convenience.E;
 import convenience.OptionsHash;
-import tester.problem.Problem;
+import tester.problem.InterfaceProblem;
 
 public abstract class TesterOld {
     
@@ -43,7 +43,7 @@ public abstract class TesterOld {
      * We execute an individual test case and measure the time it takes to solve.
      * Return the relevant data.
      */
-    HashMap<String,String> individualTest(Problem p){
+    HashMap<String,String> individualTest(InterfaceProblem p){
         long startTime = System.nanoTime();
         String sol = solveAndShowSolution(p);
         long endTime = System.nanoTime();
@@ -57,7 +57,7 @@ public abstract class TesterOld {
     /**
      * @return A string representation of the solution.
      */
-    abstract String solveAndShowSolution(Problem p);
+    abstract String solveAndShowSolution(InterfaceProblem p);
     
     abstract void test();
     

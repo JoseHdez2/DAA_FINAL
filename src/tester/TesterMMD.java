@@ -16,7 +16,7 @@ import tester.solver.Solver;
  * @author jose
  *
  */
-public class TesterTSP implements TesterInterface {
+public class TesterMMD implements TesterInterface {
     
     Solver solver;
     

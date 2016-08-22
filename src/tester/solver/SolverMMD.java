@@ -1,29 +1,42 @@
 package tester.solver;
 
+import java.util.ArrayList;
+
 import convenience.OptionsHash;
 import tester.problem.InterfaceProblem;
+import tester.problem.ProblemMMD;
 import tester.problem.ProblemTSP;
 import tester.solution.Solution;
 import tester.solution.SolutionTSP;
 
-public class SolverTSP extends SolverGraph{
+public class SolverMMD extends Solver{
     
     enum solverType {
         GREEDY,
         BRUTE_FORCE,
-        DYNAMIC_PROGRAMMING,
     }
     
     public solverType myType;
     
-    public SolverTSP(){
+    public SolverMMD(){
 //        myType = solverType.GREEDY;
         myType = solverType.BRUTE_FORCE;
     }
     
-    SolutionTSP solveByGreedy(ProblemTSP p){
+    SolutionTSP solveByGreedy(ProblemMMD p) throws Exception{
         SolutionTSP sol = new SolutionTSP();
-        sol.add(1); // Ciudad inicial por defecto.
+        // Agregamos las dos ciudades con la mayor arista del grafo.
+        for(int i = 0; i < p.getNumOfCities(); i++){
+            for(int j = 0; j < p.getNumOfCities(); j++){
+                if(p.dist(i, j) == p.getLongestDistance()){
+                    sol.add(i);
+                    sol.add(j);
+                    break;
+                }
+            }
+        }
+        // for
+        // sol.add(p.getLongestDistance()); // Ciudad inicial por defecto.
         
         while(!p.isCompleteSolution(sol)){
             float closestCityDist = Float.POSITIVE_INFINITY;
@@ -74,38 +87,30 @@ public class SolverTSP extends SolverGraph{
         }
     }
     
-    SolutionTSP solveByDynamicProgramming(ProblemTSP p){
-        SolutionTSP sol = new SolutionTSP();
-        
-        //if() TODO continuara...
-        
-        return sol;
-    }
-    
     @Override
     public Solution solve(InterfaceProblem p, OptionsHash opt) throws Exception{
         switch(myType){
         case GREEDY: return solveByGreedy((ProblemTSP)p);
         case BRUTE_FORCE: return solveByBruteForce((ProblemTSP)p);
-        case DYNAMIC_PROGRAMMING: return solveByDynamicProgramming((ProblemTSP)p);
         default: throw new Exception(String.format("Unexpected solver algorithm type %s", myType));
         }
     }
 
-
     @Override
     public Solution initialSolution() {
-        return new SolutionTSP();
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
-    public Solution initialFeasibleSolution(InterfaceProblem prob) {
-        SolutionTSP s = new SolutionTSP();
-        ProblemTSP p = (ProblemTSP)prob;
-        for (int i = 0; i < p.getNumOfCities(); i++){
-            s.add(i);
-        }
-        return s;
+    public Solution initialFeasibleSolution(InterfaceProblem p) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
+    @Override
+    public ArrayList<Solution> getNeighbors(Solution s, InterfaceProblem p) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
