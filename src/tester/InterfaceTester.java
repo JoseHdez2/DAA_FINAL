@@ -28,8 +28,9 @@ public interface InterfaceTester {
      * Perform a single test on a single problem.
      * @param opt Options for testing.
      * @return Results. TODO
+     * @throws Exception 
      */
     // public OptionsHash individualTest(InterfaceProblem p, OptionsHash opt);
     
-    public OptionsHash individualTest(OptionsHash opt);
+    public OptionsHash individualTest(OptionsHash opt) throws Exception;
 }

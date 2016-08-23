@@ -20,9 +20,11 @@ public class E {
     public static final String probSizeBeg = "probSizeBeg";
     public static final String probSizeEnd = "probSizeEnd";
     public static final String times = "times";
+    
     // Tester output.
     public static final String timeTaken = "timeTaken";
     public static final String solution = "solution";
+    public static final String solutionValue = "solutionValue";
     
     // TSP Problem generation input.
     public static final String numOfCities = "numOfCities";

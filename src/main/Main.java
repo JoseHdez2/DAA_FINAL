@@ -1,12 +1,12 @@
 package main;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import convenience.E;
 import convenience.OptionsHash;
 import tester.Tester;
-import tester.problem.ProblemTSP;
-import tester.solution.SolutionTSP;
 import tester.solver.SolverTSP;
 
 public class Main {
@@ -47,6 +47,18 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         OptionsHash probOptsGen = new OptionsHash();
+        probOptsGen.put(E.numOfCities, "6");
+        probOptsGen.put(E.minDist, "1");
+        probOptsGen.put(E.maxDist, "9");
+        probOptsGen.put(E.min + E.capitalize(E.numOfCities), "2");
+        probOptsGen.put(E.max + E.capitalize(E.numOfCities), "6");
+        Tester testes = new Tester(new SolverTSP());
+        ArrayList<String> order = new ArrayList<String>();
+        order.add(E.numOfCities);
+        testes.testBattery(probOptsGen, order, 0);
+        
+        /*
+        OptionsHash probOptsGen = new OptionsHash();
         probOptsGen.put("numOfCities", "6");
         probOptsGen.put("minDist", "1");
         probOptsGen.put("maxDist", "9");
@@ -54,6 +66,7 @@ public class Main {
         Tester tt = new Tester(new SolverTSP());
         ProblemTSP probGen = (ProblemTSP) tt.generateProblem(probOptsGen);
         System.out.println(probGen);
+        */
         
         /*
         OptionsHash probOptsXml = TSPProblemFromXML.OptFromXML(new File("res/samples/gr17.xml"));
@@ -63,10 +76,12 @@ public class Main {
         System.out.println(probXml);
         */
         
+        /*
         SolverTSP solver = new SolverTSP();
         SolutionTSP sol = (SolutionTSP)solver.solve(probGen, new OptionsHash());
         System.out.println(String.format("Sol : %s", sol));
         System.out.println(String.format("Sol : %3.2f", probGen.appraiseSolution(sol)));
         System.out.println(probGen.showSolutionAppraisal(sol));
+        */
     }
 }

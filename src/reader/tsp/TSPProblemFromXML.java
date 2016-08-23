@@ -1,4 +1,4 @@
-package reader;
+package reader.tsp;
 
 import java.io.File;
 
@@ -11,6 +11,7 @@ import org.w3c.dom.NodeList;
 
 import convenience.E;
 import convenience.OptionsHash;
+import reader.MyXML;
 
 /**
  * @author jose

@@ -1,4 +1,4 @@
-package reader;
+package reader.tsp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import convenience.OptionsHash;
+import reader.FileStringUtil;
 import tester.problem.ProblemTSP;
 
 public class ReaderTSP {
