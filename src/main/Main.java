@@ -1,17 +1,10 @@
 package main;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
-import javax.print.StreamPrintServiceFactory;
-import javax.security.auth.login.AccountLockedException;
-
-import convenience.E;
 import convenience.OptionsHash;
-import reader.TSPProblemFromXML;
-import tester.TesterTSP;
+import tester.Tester;
 import tester.problem.ProblemTSP;
 import tester.solution.SolutionTSP;
 import tester.solver.SolverTSP;
@@ -52,12 +45,13 @@ public class Main {
     }*/
     
     public static void main(String[] args) throws Exception {
+        
         OptionsHash probOptsGen = new OptionsHash();
         probOptsGen.put("numOfCities", "6");
         probOptsGen.put("minDist", "1");
         probOptsGen.put("maxDist", "9");
         System.out.println(probOptsGen);
-        TesterTSP tt = new TesterTSP();
+        Tester tt = new Tester(new SolverTSP());
         ProblemTSP probGen = (ProblemTSP) tt.generateProblem(probOptsGen);
         System.out.println(probGen);
         

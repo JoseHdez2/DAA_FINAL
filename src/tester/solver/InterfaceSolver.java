@@ -49,4 +49,12 @@ public interface InterfaceSolver {
     Solution solveByGreedy(InterfaceProblem p);
     
     Solution solveByBruteForce(InterfaceProblem p) throws Exception;
+    
+    /**
+     * 
+     * @param opt
+     * @return Problem instance generated within the provided parameters.
+     * @throws Exception If an argument indispensable for generation is missing.
+     */
+    public InterfaceProblem generateProblem(OptionsHash opt) throws Exception;
 }

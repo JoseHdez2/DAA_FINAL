@@ -113,4 +113,10 @@ public class SolverMMD extends Solver{
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public InterfaceProblem generateProblem(OptionsHash opt) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

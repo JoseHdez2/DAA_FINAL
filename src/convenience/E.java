@@ -34,4 +34,11 @@ public class E {
     public static final String m = "m";
     /** Dimensions of the points in space of the MMD Problem. */
     public static final String dim = "dim";
+    
+    public static final String min = "min";
+    public static final String max = "max";
+    
+    public static String capitalize(String str){
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
 }
