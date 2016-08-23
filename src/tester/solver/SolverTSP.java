@@ -118,16 +118,19 @@ public class SolverTSP extends SolverGraph{
     GenType genType = GenType.BIASED;
     
     @Override
-    public InterfaceProblem generateProblem(OptionsHash opt) throws Exception {
+    public InterfaceProblem generateProblem(OptionsHash optArg) throws Exception {
+        
+        OptionsHash opt = new OptionsHash();
+        opt.putAll(optArg);
         
         // TODO fast and loose
-        if(opt.containsKey("0,0") || opt.containsKey("1,1")){
+        if(optArg.containsKey("0,0") || optArg.containsKey("1,1")){
             // Ya viene con datos.
         } else {
             // Hay que generarlos.
-            int numOfCities = Integer.valueOf(opt.getIndispensable(E.numOfCities));
-            float minDist = Float.valueOf(opt.getIndispensable(E.minDist));
-            float maxDist = Float.valueOf(opt.getIndispensable(E.maxDist));
+            int numOfCities = Integer.valueOf(optArg.getIndispensable(E.numOfCities));
+            float minDist = Float.valueOf(optArg.getIndispensable(E.minDist));
+            float maxDist = Float.valueOf(optArg.getIndispensable(E.maxDist));
             
             for(int i=0; i<numOfCities; i++){
                 for(int j=i; j<numOfCities; j++){

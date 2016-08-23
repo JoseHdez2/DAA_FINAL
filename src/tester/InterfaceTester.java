@@ -1,10 +1,8 @@
 package tester;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import convenience.OptionsHash;
-import tester.problem.InterfaceProblem;
 
 public interface InterfaceTester {
     

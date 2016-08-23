@@ -13,7 +13,7 @@ public class Tester implements InterfaceTester{
 
     ArrayList<String> order = new ArrayList<String>();
     ArrayList<OptionsHash> testResults = new ArrayList<OptionsHash>();
-    // Should this be public?
+    // TODO Should this be public?
     public Solver solver;
     
     public Tester(Solver solver){
@@ -31,7 +31,7 @@ public class Tester implements InterfaceTester{
         String curOpt = order.get(orderIndex);
         int min = Integer.valueOf(opt.getIndispensable(E.min + E.capitalize(curOpt)));
         int max = Integer.valueOf(opt.getIndispensable(E.max + E.capitalize(curOpt)));
-        for(int i = min; i < max; i++){
+        for(int i = min; i <= max; i++){
             opt.put(curOpt, String.valueOf(i));
             testBattery(opt, order, orderIndex+1);
         }
@@ -41,8 +41,10 @@ public class Tester implements InterfaceTester{
     @Override
     public OptionsHash individualTest(OptionsHash opt) throws Exception {
         System.out.println(String.format("testing: %s", opt));
-        /*
+        
         InterfaceProblem p = solver.generateProblem(opt);
+        System.out.println(p);
+        
         MyTimer t = new MyTimer();
         t.start();
         Solution sol = solver.solve(p, opt);
@@ -51,7 +53,9 @@ public class Tester implements InterfaceTester{
         results.put(E.timeTaken, String.valueOf(t.getTimeCount()));
         results.put(E.solution, sol.toString());
         results.put(E.solutionValue, String.valueOf(p.appraiseSolution(sol)));
-        */      
+        
+        System.out.println(results);
+        
         return opt;
     }
 

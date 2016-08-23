@@ -50,11 +50,14 @@ public class Main {
         probOptsGen.put(E.numOfCities, "6");
         probOptsGen.put(E.minDist, "1");
         probOptsGen.put(E.maxDist, "9");
-        probOptsGen.put(E.min + E.capitalize(E.numOfCities), "2");
-        probOptsGen.put(E.max + E.capitalize(E.numOfCities), "6");
+        probOptsGen.put(E.min + E.capitalize(E.numOfCities), "3");
+        probOptsGen.put(E.max + E.capitalize(E.numOfCities), "4");
+        probOptsGen.put(E.min + E.capitalize(E.maxDist), "8");
+        probOptsGen.put(E.max + E.capitalize(E.maxDist), "9");
         Tester testes = new Tester(new SolverTSP());
         ArrayList<String> order = new ArrayList<String>();
         order.add(E.numOfCities);
+        order.add(E.maxDist);
         testes.testBattery(probOptsGen, order, 0);
         
         /*

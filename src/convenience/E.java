@@ -17,6 +17,7 @@ public class E {
     public static final String ignoredDigits = "ignoredDigits";
     
     // Tester input.
+    public static final String filename = "filename";
     public static final String probSizeBeg = "probSizeBeg";
     public static final String probSizeEnd = "probSizeEnd";
     public static final String times = "times";
@@ -30,6 +31,9 @@ public class E {
     public static final String numOfCities = "numOfCities";
     public static final String minDist = "minDist";
     public static final String maxDist = "maxDist";
+    
+    /** Used for differentiating multiple runs of solving with the same input. */
+    public static final String executionNumber = "executionNumber";
     
     // MMD Problem
     /** Target size of the solution subset. */
