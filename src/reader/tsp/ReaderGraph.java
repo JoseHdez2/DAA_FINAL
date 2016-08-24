@@ -5,20 +5,21 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import convenience.OptionsHash;
+import convenience.opthash.OptionsHash;
 import reader.FileStringUtil;
+import tester.problem.ProblemGraph;
 import tester.problem.ProblemTSP;
 
-public class ReaderTSP {
+public class ReaderGraph {
     
     enum Type {
         UNIDIRECTIONAL,
         BIDIRECTIONAL,  // C a D es la misma distancia que D a C.
     }
     
-    ReaderTSP.Type type = Type.BIDIRECTIONAL;
+    ReaderGraph.Type type = Type.BIDIRECTIONAL;
     
-    public ProblemTSP probFromTXT(File file) throws Exception{
+    public ProblemTSP probTspFromTXT(File file) throws Exception{
         return new ProblemTSP(optFromTXT(file));
     }
     

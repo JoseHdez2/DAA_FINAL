@@ -1,6 +1,6 @@
 package tester.problem;
 
-import convenience.OptionsHash;
+import convenience.opthash.OptionsHash;
 import tester.solution.Solution;
 import tester.solution.SolutionTSP;
 
@@ -8,7 +8,6 @@ public class ProblemTSP extends ProblemGraph{
     
     public ProblemTSP(OptionsHash opt) throws Exception {
         super(opt);
-        // TODO Auto-generated constructor stub
     }
 
     @Override

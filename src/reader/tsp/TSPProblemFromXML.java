@@ -10,7 +10,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import convenience.E;
-import convenience.OptionsHash;
+import convenience.opthash.OptionsHash;
 import reader.MyXML;
 
 /**

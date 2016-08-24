@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import convenience.E;
-import convenience.OptionsHash;
+import convenience.opthash.OptionsHash;
 import tester.Tester;
 import tester.solver.SolverTSP;
 

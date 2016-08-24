@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-public class FileStringUtil {
+public abstract class FileStringUtil {
     
     // Token separator, for visibly reducing whitespace, etc. TODO: weird phrasing
     public static String SEPARATOR = "#";

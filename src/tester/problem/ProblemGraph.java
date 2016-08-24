@@ -1,12 +1,11 @@
 package tester.problem;
 
 import convenience.E;
-import convenience.OptionsHash;
-import tester.solution.Solution;
+import convenience.opthash.OptionsHash;
 
 /**
- * Implementation of a Problem which is modeled in a graph.
- * Provides basic features for Problems that use a graph as a data structure.
+ * Implementación de un Problema (Problem) que se pueda modelar en un grafo.
+ * Proporciona funcionalidad básica para problemas que usan un grafo como estructura de datos.
  * @author jose
  *
  */

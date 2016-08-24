@@ -2,7 +2,7 @@ package tester.solver;
 
 import java.util.ArrayList;
 
-import convenience.OptionsHash;
+import convenience.opthash.OptionsHash;
 import tester.problem.InterfaceProblem;
 import tester.solution.Solution;
 

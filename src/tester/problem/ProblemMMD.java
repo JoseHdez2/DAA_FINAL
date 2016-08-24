@@ -1,7 +1,7 @@
 package tester.problem;
 
 import convenience.E;
-import convenience.OptionsHash;
+import convenience.opthash.OptionsHash;
 import tester.solution.Solution;
 import tester.solution.SolutionMMD;
 import tester.solution.SolutionTSP;

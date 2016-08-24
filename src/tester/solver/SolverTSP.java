@@ -1,8 +1,8 @@
 package tester.solver;
 
 import convenience.E;
-import convenience.OptionsHash;
 import convenience.Rand;
+import convenience.opthash.OptionsHash;
 import tester.problem.InterfaceProblem;
 import tester.problem.ProblemTSP;
 import tester.solution.Solution;
@@ -120,45 +120,46 @@ public class SolverTSP extends SolverGraph{
     @Override
     public InterfaceProblem generateProblem(OptionsHash optArg) throws Exception {
         
-        OptionsHash opt = new OptionsHash();
-        opt.putAll(optArg);
-        
-        // TODO fast and loose
         if(optArg.containsKey("0,0") || optArg.containsKey("1,1")){
-            // Ya viene con datos.
-        } else {
-            // Hay que generarlos.
-            int numOfCities = Integer.valueOf(optArg.getIndispensable(E.numOfCities));
-            float minDist = Float.valueOf(optArg.getIndispensable(E.minDist));
-            float maxDist = Float.valueOf(optArg.getIndispensable(E.maxDist));
-            
-            for(int i=0; i<numOfCities; i++){
-                for(int j=i; j<numOfCities; j++){
-                    if(j == i){
-                        opt.put(String.format("%s,%s", i,j), "0");
+            return new ProblemTSP(optArg);
+        }
+        
+        /** Hash con la definicion del problema TSP generado. */
+        OptionsHash optDef = new OptionsHash();
+        optDef.put(E.numOfCities, optArg.get(E.numOfCities));
+        // opt.putAll(optArg);
+        
+        // Hay que generarlos.
+        int numOfCities = Integer.valueOf(optArg.getIndispensable(E.numOfCities));
+        float minDist = Float.valueOf(optArg.getIndispensable(E.minDist));
+        float maxDist = Float.valueOf(optArg.getIndispensable(E.maxDist));
+        
+        for(int i=0; i<numOfCities; i++){
+            for(int j=i; j<numOfCities; j++){
+                if(j == i){
+                    optDef.put(String.format("%s,%s", i,j), "0");
+                }
+                else {
+                    switch(genType){
+                    case BIASED:
+                        optDef.put(String.format("%s,%s", i,j), 
+                                String.valueOf(maxDist)); break;
+                    case UNIFORM_DISTRIBUTION:
+                        optDef.put(String.format("%s,%s", i,j), 
+                                String.valueOf(Rand.randFloat(minDist, maxDist))); break;
                     }
-                    else {
-                        switch(genType){
-                        case BIASED:
-                            opt.put(String.format("%s,%s", i,j), 
-                                    String.valueOf(maxDist)); break;
-                        case UNIFORM_DISTRIBUTION:
-                            opt.put(String.format("%s,%s", i,j), 
-                                    String.valueOf(Rand.randFloat(minDist, maxDist))); break;
-                        }
-                    }
-                    if(genType == GenType.BIASED){
-                        int randSisterCity;
-                        do{
-                            randSisterCity = Rand.randInt(0, numOfCities-1);
-                        }while(randSisterCity == i);
-                        opt.put(String.format("%s,%s", i, randSisterCity), 
-                                        String.valueOf(minDist));
-                    }
+                }
+                if(genType == GenType.BIASED){
+                    int randSisterCity;
+                    do{
+                        randSisterCity = Rand.randInt(0, numOfCities-1);
+                    }while(randSisterCity == i);
+                    optDef.put(String.format("%s,%s", i, randSisterCity), 
+                                    String.valueOf(minDist));
                 }
             }
         }
-
-        return new ProblemTSP(opt);
+        
+        return new ProblemTSP(optDef);
     }
 }

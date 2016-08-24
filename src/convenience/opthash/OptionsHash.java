@@ -1,4 +1,4 @@
-package convenience;
+package convenience.opthash;
 
 import java.util.HashMap;
 
