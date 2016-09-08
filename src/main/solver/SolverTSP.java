@@ -1,12 +1,12 @@
-package tester.solver;
+package main.solver;
 
 import convenience.opthash.HashProbDef;
 import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
-import tester.problem.InterfaceProblem;
-import tester.problem.ProblemTSP;
-import tester.solution.Solution;
-import tester.solution.SolutionTSP;
+import main.problem.InterfaceProblem;
+import main.problem.ProblemTSP;
+import main.solution.Solution;
+import main.solution.SolutionTSP;
 
 public class SolverTSP extends SolverGraph{
     

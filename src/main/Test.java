@@ -7,11 +7,11 @@ import convenience.E;
 import convenience.Rand;
 import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
+import main.problem.ProblemTSP;
+import main.solver.SolverMMD;
+import main.solver.SolverTSP;
+import main.tester.Tester;
 import reader.tsp.GraphProblemFromXML;
-import tester.Tester;
-import tester.problem.ProblemTSP;
-import tester.solver.SolverMMD;
-import tester.solver.SolverTSP;
 
 public abstract class Test {
 

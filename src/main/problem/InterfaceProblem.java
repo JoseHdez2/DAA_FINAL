@@ -1,8 +1,8 @@
-package tester.problem;
+package main.problem;
 
 import java.util.ArrayList;
 
-import tester.solution.Solution;
+import main.solution.Solution;
 
 public interface InterfaceProblem {
     

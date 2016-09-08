@@ -1,8 +1,8 @@
-package tester.problem;
+package main.problem;
 
 import convenience.opthash.OptionsHash;
-import tester.solution.Solution;
-import tester.solution.SolutionTSP;
+import main.solution.Solution;
+import main.solution.SolutionTSP;
 
 public class ProblemTSP extends ProblemGraph{
     

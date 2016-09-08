@@ -1,4 +1,4 @@
-package tester.solver;
+package main.solver;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,12 +8,12 @@ import convenience.Rand;
 import convenience.opthash.HashGraphDef;
 import convenience.opthash.HashProbDef;
 import convenience.opthash.HashProbGen;
+import main.problem.InterfaceProblem;
+import main.problem.ProblemGraph;
+import main.solution.Solution;
+import main.solution.SolutionGraph;
 import reader.tsp.GraphProblemFromXML;
 import reader.tsp.ReaderGraph;
-import tester.problem.InterfaceProblem;
-import tester.problem.ProblemGraph;
-import tester.solution.Solution;
-import tester.solution.SolutionGraph;
 
 public abstract class SolverGraph extends Solver{
     

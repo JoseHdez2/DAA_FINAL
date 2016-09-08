@@ -1,12 +1,12 @@
-package tester.solver;
+package main.solver;
 
 import java.util.ArrayList;
 
 import convenience.opthash.HashProbDef;
 import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
-import tester.problem.InterfaceProblem;
-import tester.solution.Solution;
+import main.problem.InterfaceProblem;
+import main.solution.Solution;
 
 public interface InterfaceSolver {
 

@@ -1,6 +1,6 @@
 package brassard_bratley.tsp;
 
-import tester.problem.ProblemTSP;
+import main.problem.ProblemTSP;
 
 public abstract class AlgorithmsTSP {
     /*

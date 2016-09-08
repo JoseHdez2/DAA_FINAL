@@ -1,15 +1,15 @@
-package tester.solver;
+package main.solver;
 
 import convenience.opthash.HashGraphGen;
 import convenience.opthash.HashProbDef;
 import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
-import tester.problem.InterfaceProblem;
-import tester.problem.ProblemGraph;
-import tester.problem.ProblemMMD;
-import tester.solution.Solution;
-import tester.solution.SolutionMMD;
-import tester.solution.SolutionTSP;
+import main.problem.InterfaceProblem;
+import main.problem.ProblemGraph;
+import main.problem.ProblemMMD;
+import main.solution.Solution;
+import main.solution.SolutionMMD;
+import main.solution.SolutionTSP;
 
 public class SolverMMD extends SolverGraph{
     

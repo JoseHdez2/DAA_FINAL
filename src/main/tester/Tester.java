@@ -1,4 +1,4 @@
-package tester;
+package main.tester;
 
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -14,9 +14,9 @@ import convenience.opthash.HashProbDef;
 import convenience.opthash.HashProbGen;
 import convenience.opthash.HashTestRes;
 import convenience.opthash.OptionsHash;
-import tester.problem.InterfaceProblem;
-import tester.solution.Solution;
-import tester.solver.Solver;
+import main.problem.InterfaceProblem;
+import main.solution.Solution;
+import main.solver.Solver;
 
 public class Tester implements InterfaceTester{
 

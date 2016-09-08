@@ -1,4 +1,4 @@
-package tester.problem;
+package main.problem;
 
 import convenience.Graph;
 import convenience.opthash.OptionsHash;

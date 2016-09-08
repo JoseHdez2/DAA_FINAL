@@ -1,4 +1,4 @@
-package tester.solution;
+package main.solution;
 
 public interface Solution {
 }

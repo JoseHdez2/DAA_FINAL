@@ -1,9 +1,9 @@
-package tester.problem;
+package main.problem;
 
 import convenience.opthash.OptionsHash;
-import tester.solution.Solution;
-import tester.solution.SolutionMMD;
-import tester.solution.SolutionTSP;
+import main.solution.Solution;
+import main.solution.SolutionMMD;
+import main.solution.SolutionTSP;
 
 public class ProblemMMD extends ProblemGraph{
 
