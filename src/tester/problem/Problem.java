@@ -8,7 +8,8 @@ public abstract class Problem implements InterfaceProblem{
     
     @Override
     public Solution bestSolution(ArrayList<Solution> solutions) {
-        // TODO if(s.isEmpty())
+        if(solutions.isEmpty()) return null;
+        
         Solution bestNeigh = null;
         Float bestVal = null;
         for (Solution neigh : solutions){

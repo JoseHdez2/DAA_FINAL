@@ -7,6 +7,6 @@ package convenience.opthash;
  * @author jose
  *
  */
-public class TestOptHash extends OptionsHash {
+public class HashTestOpt extends OptionsHash {
 
 }

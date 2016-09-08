@@ -2,7 +2,7 @@ package convenience.opthash;
 
 import java.util.HashMap;
 
-public class OptionsHash extends HashMap<String, String> {
+public abstract class OptionsHash extends HashMap<String, String> {
     
     /**
      * Obtiene una opción indispensable, dando error si no se da.
@@ -17,5 +17,9 @@ public class OptionsHash extends HashMap<String, String> {
             throw new Exception(String.format("Indispensable option %s not in OptionsHash%n%s!", str, this));
         }
         else return this.get(str);
+    }
+    
+    public boolean isValid(){
+        return true;
     }
 }

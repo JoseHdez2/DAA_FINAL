@@ -1,24 +1,28 @@
 package tester.problem;
 
-import convenience.opthash.OptionsHash;
 import tester.solution.Solution;
 import tester.solution.SolutionMMD;
 import tester.solution.SolutionTSP;
 
-public class ProblemMMD extends ProblemGraph{
+public class ProblemMDiv extends ProblemGraph{
 
+    /** Tamaño objetivo del conjunto solucion a este problema. */
+    int m;
     /** Numero de nodos del grafo. */
     int n;
     
-    public ProblemMMD(ProblemGraph p){
+    ProblemMDiv(ProblemGraph p){
         super(p);
-        n = this.getNumOfCities();
+        ProblemMDiv p2 = (ProblemMDiv)p;
+        m = p2.m;
+        n = this.g.numOfCities;
     }
-    
-    public ProblemMMD(OptionsHash opt) throws Exception{
+    /*
+    ProblemMDiv(OptionsHash opt) throws Exception{
         super(opt);
-        n = this.getNumOfCities();
-    }
+        m = Integer.valueOf(opt.getIndispensable(E.m));
+        n = getNumOfCities();
+    }*/
     
     /** Mean Dispersion (function to maximize) of a Solution. */
     private float md(SolutionMMD s){
@@ -38,7 +42,11 @@ public class ProblemMMD extends ProblemGraph{
 
     @Override
     public boolean isCompleteSolution(Solution s) throws Exception {
-        return true;
+        SolutionMMD sol = (SolutionMMD)s;
+        if (sol.size() == m) return true;
+        if (sol.size() < m) return false;
+        // reach if (sol.size() > m) 
+        throw new Exception(String.format("The jig is up", true));
     }
 
     @Override
@@ -52,10 +60,6 @@ public class ProblemMMD extends ProblemGraph{
     @Override
     public ObjectiveFunction objFunc() {
         return ObjectiveFunction.MAXIMIZE;
-    }
-
-    public float getLongestDistance() {
-        return g.getLongestDistance();
     }
 
 }

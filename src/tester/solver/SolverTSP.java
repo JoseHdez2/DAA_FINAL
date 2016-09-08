@@ -1,7 +1,7 @@
 package tester.solver;
 
-import convenience.E;
-import convenience.Rand;
+import convenience.opthash.HashProbDef;
+import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
 import tester.problem.InterfaceProblem;
 import tester.problem.ProblemTSP;
@@ -25,7 +25,7 @@ public class SolverTSP extends SolverGraph{
     
     SolutionTSP solveByGreedy(ProblemTSP p){
         SolutionTSP sol = new SolutionTSP();
-        sol.add(1); // Ciudad inicial por defecto.
+        sol.add(1); // "1" es la ciudad inicial por defecto, no perdemos generalidad.
         
         while(!p.isCompleteSolution(sol)){
             float closestCityDist = Float.POSITIVE_INFINITY;
@@ -34,10 +34,8 @@ public class SolverTSP extends SolverGraph{
             // Buscamos la ciudad más cercana a la última ciudad y la añadimos.
             for(Integer c = 0; c < p.getNumOfCities(); c++){
                 // Nos saltamos la ciudad si ya está en la solución.
-                if (sol.contains(c)) {
-                    // System.out.println(String.format("%d already in solution", c));
-                    continue;
-                }
+                if (sol.contains(c)) continue;
+                
                 if(p.dist(sol.getLatest(), c) < closestCityDist){
                     System.out.println(String.format("New best: %d (%3.2f)", c, p.dist(sol.getLatest(), c)));
                     closestCityDist = p.dist(sol.getLatest(), c);
@@ -109,57 +107,14 @@ public class SolverTSP extends SolverGraph{
         }
         return s;
     }
+    
+    public HashProbDef generateProblemDefinition(HashProbGen hashProbGen) throws Exception {
+        return super.generateProblemDefinition(hashProbGen);
+    }
 
-    enum GenType {
-        UNIFORM_DISTRIBUTION,   // Evenly random distances between minDist and maxDist.
-        BIASED                  // A single path with minDist distances, rest with maxDist (good for debugging).
-    }
-    
-    GenType genType = GenType.BIASED;
-    
     @Override
-    public InterfaceProblem generateProblem(OptionsHash optArg) throws Exception {
-        
-        if(optArg.containsKey("0,0") || optArg.containsKey("1,1")){
-            return new ProblemTSP(optArg);
-        }
-        
-        /** Hash con la definicion del problema TSP generado. */
-        OptionsHash optDef = new OptionsHash();
-        optDef.put(E.numOfCities, optArg.get(E.numOfCities));
-        // opt.putAll(optArg);
-        
-        // Hay que generarlos.
-        int numOfCities = Integer.valueOf(optArg.getIndispensable(E.numOfCities));
-        float minDist = Float.valueOf(optArg.getIndispensable(E.minDist));
-        float maxDist = Float.valueOf(optArg.getIndispensable(E.maxDist));
-        
-        for(int i=0; i<numOfCities; i++){
-            for(int j=i; j<numOfCities; j++){
-                if(j == i){
-                    optDef.put(String.format("%s,%s", i,j), "0");
-                }
-                else {
-                    switch(genType){
-                    case BIASED:
-                        optDef.put(String.format("%s,%s", i,j), 
-                                String.valueOf(maxDist)); break;
-                    case UNIFORM_DISTRIBUTION:
-                        optDef.put(String.format("%s,%s", i,j), 
-                                String.valueOf(Rand.randFloat(minDist, maxDist))); break;
-                    }
-                }
-                if(genType == GenType.BIASED){
-                    int randSisterCity;
-                    do{
-                        randSisterCity = Rand.randInt(0, numOfCities-1);
-                    }while(randSisterCity == i);
-                    optDef.put(String.format("%s,%s", i, randSisterCity), 
-                                    String.valueOf(minDist));
-                }
-            }
-        }
-        
-        return new ProblemTSP(optDef);
+    public InterfaceProblem instantiateProblem(HashProbDef hashProbDef) throws Exception {
+        return new ProblemTSP(hashProbDef);
     }
+
 }

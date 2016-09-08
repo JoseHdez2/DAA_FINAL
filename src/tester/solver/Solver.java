@@ -2,6 +2,7 @@ package tester.solver;
 
 import java.util.ArrayList;
 
+import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
 import tester.problem.InterfaceProblem;
 import tester.solution.Solution;
@@ -22,8 +23,8 @@ public abstract class Solver implements InterfaceSolver {
     ObjectiveFunction objFunc;
     
     @Override
-    public Solution bestNeighbor(Solution s, InterfaceProblem p) {
-        return p.bestSolution(getNeighbors(s, p));
+    public Solution bestNeighbor(Solution s, InterfaceProblem p, NeighborMode mode) {
+        return p.bestSolution(getNeighbors(s, p, mode));
     }
     
     @Override
@@ -33,7 +34,7 @@ public abstract class Solver implements InterfaceSolver {
         boolean solutionImproved = false;
         do {
             solutionImproved = false;
-            Solution bestNeigh = bestNeighbor(s, p);
+            Solution bestNeigh = bestNeighbor(s, p, NeighborMode.ALL);
             switch(objFunc){
             case MAXIMIZE: if(p.appraiseSolution(bestNeigh) > p.appraiseSolution(s)) 
                 s = bestNeigh; 
@@ -61,11 +62,16 @@ public abstract class Solver implements InterfaceSolver {
             if(p.isCompleteSolution(expandee)){
                 leafs.add(expandee);
             } else {
-                branches.addAll(getNeighbors(expandee, p));
+                branches.addAll(getNeighbors(expandee, p, NeighborMode.ADDITIVE));
                 branches.add(expandee);
             }
         }
         
         return p.bestSolution(leafs);
+    }
+    
+    @Override
+    public InterfaceProblem generateProblem(HashProbGen hashProbGen) throws Exception {
+        return instantiateProblem(generateProblemDefinition(hashProbGen));
     }
 }

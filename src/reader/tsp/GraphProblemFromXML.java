@@ -10,6 +10,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import convenience.E;
+import convenience.opthash.HashGraphDef;
+import convenience.opthash.HashProbDef;
 import convenience.opthash.OptionsHash;
 import reader.MyXML;
 
@@ -19,10 +21,10 @@ import reader.MyXML;
  *  Creates a TSP problem from an XML file.
  *  XML file uses TSPLIB format.
  */
-public abstract class TSPProblemFromXML{
+public abstract class GraphProblemFromXML{
     
-    public static OptionsHash OptFromXML(File file) throws Exception{
-        Document dom = TSPProblemFromXML.parseXML(file);
+    public static HashGraphDef graphDefFromXML(File file) throws Exception{
+        Document dom = GraphProblemFromXML.parseXML(file);
         return parseDocument(dom);
     }
     
@@ -40,7 +42,7 @@ public abstract class TSPProblemFromXML{
         return dom;
     }
     
-    private static OptionsHash parseDocument(Document dom) throws Exception{
+    private static HashGraphDef parseDocument(Document dom) throws Exception{
         Element docEle = dom.getDocumentElement();
         
         String name = MyXML.getStringContent(docEle, E.name);
@@ -50,7 +52,7 @@ public abstract class TSPProblemFromXML{
         Integer ignoredDigits = Integer.parseInt(MyXML.getStringContent(docEle, E.ignoredDigits));
         
         Element graphEle = (Element) MyXML.getSubNode(docEle, "graph");
-        OptionsHash distanceMatrix = parseGraphElement(graphEle);
+        HashGraphDef distanceMatrix = parseGraphElement(graphEle);
         
         distanceMatrix.put(E.name, name);
         distanceMatrix.put(E.source, source);
@@ -74,11 +76,11 @@ public abstract class TSPProblemFromXML{
      * @return HashMap with distances.
      * @throws Exception
      */
-    private static OptionsHash parseGraphElement(Element graphEle) throws Exception{
+    private static HashGraphDef parseGraphElement(Element graphEle) throws Exception{
         NodeList vertexEleList = MyXML.getSubNodeList(graphEle, "vertex");
         
         // DistanceMatrix distMat = new DistanceMatrix(vertexEleList.getLength());
-        OptionsHash distMat2 = new OptionsHash();
+        HashGraphDef distMat2 = new HashGraphDef();
         int numOfCities = vertexEleList.getLength();
         distMat2.put(E.numOfCities, String.valueOf(numOfCities));
         

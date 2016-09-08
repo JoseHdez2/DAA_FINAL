@@ -2,6 +2,8 @@ package tester.solver;
 
 import java.util.ArrayList;
 
+import convenience.opthash.HashProbDef;
+import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
 import tester.problem.InterfaceProblem;
 import tester.solution.Solution;
@@ -42,9 +44,16 @@ public interface InterfaceSolver {
         ALL
     }
     
-    ArrayList<Solution> getNeighbors(Solution s, InterfaceProblem p);
+    /**
+     * Devolver los vecinos en el espacio de soluciones.
+     * @param s La solucion cuyos vecinos se devolveran.
+     * @param p El problema que especificara el espacio de soluciones.
+     * @param mode Modo que indica el tipo de vecinos que devolver.
+     * @return
+     */
+    ArrayList<Solution> getNeighbors(Solution s, InterfaceProblem p, NeighborMode mode);
     
-    Solution bestNeighbor(Solution s, InterfaceProblem p);
+    Solution bestNeighbor(Solution s, InterfaceProblem p, NeighborMode mode);
     
     Solution solveByGreedy(InterfaceProblem p);
     
@@ -53,8 +62,21 @@ public interface InterfaceSolver {
     /**
      * 
      * @param opt
+     * @return Problem description instance generated within the provided parameters.
+     * @throws Exception If an argument indispensable for generation is missing.
+     */
+    public HashProbDef generateProblemDefinition(HashProbGen hashProbGen) throws Exception;
+    
+    /**
+     * 
+     * @param opt
      * @return Problem instance generated within the provided parameters.
      * @throws Exception If an argument indispensable for generation is missing.
      */
-    public InterfaceProblem generateProblem(OptionsHash opt) throws Exception;
+    public InterfaceProblem generateProblem(HashProbGen hashProbGen) throws Exception;
+    
+    /**
+     * 
+     */
+    public InterfaceProblem instantiateProblem(HashProbDef hashProbDef) throws Exception;
 }

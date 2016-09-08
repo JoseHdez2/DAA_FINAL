@@ -2,6 +2,8 @@ package tester;
 
 import java.util.ArrayList;
 
+import convenience.opthash.HashProbGen;
+import convenience.opthash.HashTestRes;
 import convenience.opthash.OptionsHash;
 
 public interface InterfaceTester {
@@ -13,7 +15,7 @@ public interface InterfaceTester {
      * @throws Exception 
      * @throws NumberFormatException 
      */
-    public ArrayList<OptionsHash> testBattery(OptionsHash opt, ArrayList<String> order, int orderIndex) throws NumberFormatException, Exception;
+    public ArrayList<HashTestRes> testBattery(HashProbGen opt, ArrayList<String> order, int orderIndex) throws NumberFormatException, Exception;
     
     /**
      * Same but, all tests are done on the same Problem.
@@ -30,6 +32,6 @@ public interface InterfaceTester {
      */
     // public OptionsHash individualTest(InterfaceProblem p, OptionsHash opt);
     
-    public OptionsHash individualTest(OptionsHash opt) throws Exception;
+    public OptionsHash individualTest(HashProbGen opt) throws Exception;
 
 }

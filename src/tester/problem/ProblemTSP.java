@@ -6,6 +6,10 @@ import tester.solution.SolutionTSP;
 
 public class ProblemTSP extends ProblemGraph{
     
+    public ProblemTSP(ProblemGraph p){
+        super(p);
+    }
+    
     public ProblemTSP(OptionsHash opt) throws Exception {
         super(opt);
     }
@@ -33,18 +37,18 @@ public class ProblemTSP extends ProblemGraph{
     @Override
     public boolean isCompleteSolution(Solution s) {
         SolutionTSP sol = (SolutionTSP)s;
-        if (sol.size() == numOfCities) return true;
+        if (sol.size() == getNumOfCities()) return true;
         else return false;
     }
     
     @Override
     public float getSolutionPotential(Solution s) {
         SolutionTSP sol = (SolutionTSP)s;
-        int remainingCities = numOfCities - sol.size();
+        int remainingCities = getNumOfCities() - sol.size();
         // Best possible case, although maybe too naive.
-        return getShortestDistance() * remainingCities;
+        return g.getShortestDistance() * remainingCities;
     }
-
+    
     @Override
     public ObjectiveFunction objFunc() {
         return ObjectiveFunction.MINIMIZE;

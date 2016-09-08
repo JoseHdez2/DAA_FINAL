@@ -8,6 +8,6 @@ package convenience.opthash;
  * @author jose
  *
  */
-public class ProblemDefHash extends OptionsHash {
+public class HashProbGen extends OptionsHash {
 
 }
