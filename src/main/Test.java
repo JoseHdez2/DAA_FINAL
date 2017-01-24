@@ -8,7 +8,7 @@ import convenience.Rand;
 import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
 import main.problem.ProblemTSP;
-import main.solver.SolverMMD;
+import main.solver.SolverDispersion;
 import main.solver.SolverTSP;
 import main.tester.Tester;
 import reader.tsp.GraphProblemFromXML;
@@ -62,7 +62,7 @@ public abstract class Test {
         ArrayList<String> order = new ArrayList<String>();
         order.add(E.randomSeed);
         order.add(E.executionNumber);
-        Tester testes = new Tester(new SolverMMD(SolverMMD.solverType.GREEDY));
+        Tester testes = new Tester(new SolverDispersion(SolverDispersion.solverType.GREEDY));
         testes.testBatteryAndPrint(probGenOpt, order, "test4.md");
     }
     

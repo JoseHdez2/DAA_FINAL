@@ -8,10 +8,10 @@ import main.problem.InterfaceProblem;
 import main.problem.ProblemGraph;
 import main.problem.ProblemDispersion;
 import main.solution.Solution;
-import main.solution.SolutionMMD;
+import main.solution.SolutionDispersion;
 import main.solution.SolutionTSP;
 
-public class SolverMMD extends SolverGraph{
+public class SolverDispersion extends SolverGraph{
     
     public enum solverType {
         GREEDY,
@@ -23,12 +23,12 @@ public class SolverMMD extends SolverGraph{
     
     public solverType myType;
     
-    public SolverMMD(SolverMMD.solverType solverType){
+    public SolverDispersion(SolverDispersion.solverType solverType){
         myType = solverType;
     }
     
-    SolutionMMD solveByGreedy(ProblemDispersion p) throws Exception{
-        SolutionMMD sol = new SolutionMMD();
+    SolutionDispersion solveByGreedy(ProblemDispersion p) throws Exception{
+        SolutionDispersion sol = new SolutionDispersion();
         // Agregamos las dos ciudades i,j con la mayor arista del grafo.
         Integer longestI = null;
         Integer longestJ = null;
@@ -51,8 +51,8 @@ public class SolverMMD extends SolverGraph{
              * Escogemos el mejor de los vecinos aditivos de "sol", o lo que es lo mismo,
              * agregamos el nodo que mas optimiza la solucion.
              */
-            SolutionMMD sol2 = 
-                    (SolutionMMD) p.bestSolution(getNeighbors(sol, p, NeighborMode.ADDITIVE));
+            SolutionDispersion sol2 = 
+                    (SolutionDispersion) p.bestSolution(getNeighbors(sol, p, NeighborMode.ADDITIVE));
             
             if(sol2 == null) break;
             

@@ -1,7 +1,7 @@
 package main.problem;
 
 import main.solution.Solution;
-import main.solution.SolutionMMD;
+import main.solution.SolutionDispersion;
 import main.solution.SolutionTSP;
 
 /**
@@ -28,7 +28,7 @@ public class ProblemDiversity extends ProblemGraph{
     }*/
     
     /** Mean Dispersion (function to maximize) of a Solution. */
-    private float md(SolutionMMD s){
+    private float md(SolutionDispersion s){
         float sum = 0;
         for(int i = 0; i < s.size(); i++){
             for(int j = 0; j < i; j++){
@@ -40,12 +40,12 @@ public class ProblemDiversity extends ProblemGraph{
 
     @Override
     public float appraiseSolution(Solution s) {
-        return md((SolutionMMD)s);
+        return md((SolutionDispersion)s);
     }
 
     @Override
     public boolean isCompleteSolution(Solution s) throws Exception {
-        SolutionMMD sol = (SolutionMMD)s;
+        SolutionDispersion sol = (SolutionDispersion)s;
         if (sol.size() == m) return true;
         if (sol.size() < m) return false;
         // reach if (sol.size() > m) 

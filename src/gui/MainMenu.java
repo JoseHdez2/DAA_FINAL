@@ -19,25 +19,35 @@ public class MainMenu extends CoolFrame{
 	
 	ActionListener mDivMenu = new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
-			new MainMenu();
+			System.out.println("SUP");
 		};
 	};
 	
-	final static JButton btnDiversity = new JButton("Max Diversity");
-	final static JButton btnDispersion = new JButton("Max Mean Dispersion");
+	// TODO: what
+//	final static JButton btnDiversity = new JButton("Max Diversity");
+//	final static JButton btnDispersion = new JButton("Max Mean Dispersion");
 
 	@Override
 	public void addStuffIntoMe() {
 		this.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
-		JButton btnMDiv = new JButton("Mean Division");
-		this.add(btnMDiv);
+		JButton btnDiversity = new JButton("Mean Division");
+		this.add(btnDiversity);
 		
-		btnMDiv.addActionListener(mDivMenu);
+		btnDiversity.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) {
+            	System.out.println("ping");
+            }
+        });
 		
-		JButton btnMMD = new JButton("Max Mean Dispersion");
-		this.add(btnMMD);
+		JButton btnDispersion = new JButton("Max Mean Dispersion");
+		btnDispersion.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) {
+            	System.out.println("pong");
+            }
+        });
+		this.add(btnDispersion);
 		
-		btnMMD.addActionListener(mDivMenu);
+		btnDispersion.addActionListener(mDivMenu);
 	}
 	
 }
