@@ -24,6 +24,7 @@ public class Main {
     }
     
     public static void main(String[] args) throws Exception {
-        Test.test6();
+        //Test.test6();
+    	System.out.println("Console mode.");
     }
 }

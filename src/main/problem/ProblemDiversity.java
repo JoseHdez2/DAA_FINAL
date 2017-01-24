@@ -4,16 +4,19 @@ import main.solution.Solution;
 import main.solution.SolutionMMD;
 import main.solution.SolutionTSP;
 
-public class ProblemMDiv extends ProblemGraph{
+/**
+ * Maximum Diversity Problem
+ */
+public class ProblemDiversity extends ProblemGraph{
 
     /** Tamaño objetivo del conjunto solucion a este problema. */
     int m;
     /** Numero de nodos del grafo. */
     int n;
     
-    ProblemMDiv(ProblemGraph p){
+    ProblemDiversity(ProblemGraph p){
         super(p);
-        ProblemMDiv p2 = (ProblemMDiv)p;
+        ProblemDiversity p2 = (ProblemDiversity)p;
         m = p2.m;
         n = this.g.numOfCities;
     }

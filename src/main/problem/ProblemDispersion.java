@@ -5,17 +5,20 @@ import main.solution.Solution;
 import main.solution.SolutionMMD;
 import main.solution.SolutionTSP;
 
-public class ProblemMMD extends ProblemGraph{
+/**
+ * Maximum Mean Dispersion (MMD) Problem.
+ */
+public class ProblemDispersion extends ProblemGraph{
 
     /** Numero de nodos del grafo. */
     int n;
     
-    public ProblemMMD(ProblemGraph p){
+    public ProblemDispersion(ProblemGraph p){
         super(p);
         n = this.getNumOfCities();
     }
     
-    public ProblemMMD(OptionsHash opt) throws Exception{
+    public ProblemDispersion(OptionsHash opt) throws Exception{
         super(opt);
         n = this.getNumOfCities();
     }

@@ -6,7 +6,7 @@ import convenience.opthash.HashProbGen;
 import convenience.opthash.OptionsHash;
 import main.problem.InterfaceProblem;
 import main.problem.ProblemGraph;
-import main.problem.ProblemMMD;
+import main.problem.ProblemDispersion;
 import main.solution.Solution;
 import main.solution.SolutionMMD;
 import main.solution.SolutionTSP;
@@ -27,7 +27,7 @@ public class SolverMMD extends SolverGraph{
         myType = solverType;
     }
     
-    SolutionMMD solveByGreedy(ProblemMMD p) throws Exception{
+    SolutionMMD solveByGreedy(ProblemDispersion p) throws Exception{
         SolutionMMD sol = new SolutionMMD();
         // Agregamos las dos ciudades i,j con la mayor arista del grafo.
         Integer longestI = null;
@@ -100,7 +100,7 @@ public class SolverMMD extends SolverGraph{
     @Override
     public Solution solve(InterfaceProblem p, OptionsHash opt) throws Exception{
         switch(myType){
-        case GREEDY: return solveByGreedy((new ProblemMMD((ProblemGraph)p)));
+        case GREEDY: return solveByGreedy((new ProblemDispersion((ProblemGraph)p)));
         //case BRUTE_FORCE: return solveByBruteForce((new ProblemMMD((ProblemGraph)p)));
         default: throw new Exception(String.format("Unexpected solver algorithm type %s", myType));
         }
@@ -120,6 +120,6 @@ public class SolverMMD extends SolverGraph{
 
     @Override
     public InterfaceProblem instantiateProblem(HashProbDef hashProbDef) throws Exception {
-        return new ProblemMMD(hashProbDef);
+        return new ProblemDispersion(hashProbDef);
     }
 }
