@@ -41,5 +41,5 @@ public abstract class CoolFrame extends JFrame {
 	 * Add stuff into me, the CoolFrame, before I set myself visible
 	 * and become a stupid immutable baby JFrame.
 	 */
-	abstract public void addStuffIntoMe();
+	abstract protected void addStuffIntoMe();
 }

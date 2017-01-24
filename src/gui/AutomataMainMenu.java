@@ -9,45 +9,39 @@ import javax.swing.JButton;
 
 import convenience.gui.CoolFrame;
 
-public class MainMenu extends CoolFrame{
+public class AutomataMainMenu extends CoolFrame{
 
-	static final Dimension menuDimension = new Dimension(800,600); 
+	static public final Dimension menuDimension = new Dimension(800,600); 
 	
-	public MainMenu() {
+	public AutomataMainMenu() {
 		super(menuDimension, CoolFrame.Type.MainCoolFrame);
 	}
-	
-	ActionListener mDivMenu = new ActionListener(){
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("SUP");
-		};
-	};
 	
 	// TODO: what
 //	final static JButton btnDiversity = new JButton("Max Diversity");
 //	final static JButton btnDispersion = new JButton("Max Mean Dispersion");
 
 	@Override
-	public void addStuffIntoMe() {
+	protected void addStuffIntoMe() {
 		this.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
-		JButton btnDiversity = new JButton("Mean Division");
-		this.add(btnDiversity);
 		
+		JButton btnDiversity = new JButton("Mean Diversity");
 		btnDiversity.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) {
             	System.out.println("ping");
+            	new SubMenuDiversity();
             }
         });
-		
+		this.add(btnDiversity);
+
 		JButton btnDispersion = new JButton("Max Mean Dispersion");
 		btnDispersion.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) {
             	System.out.println("pong");
+            	
             }
         });
 		this.add(btnDispersion);
-		
-		btnDispersion.addActionListener(mDivMenu);
 	}
 	
 }
